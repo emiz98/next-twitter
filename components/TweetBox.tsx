@@ -7,6 +7,7 @@ import {
 } from '@heroicons/react/outline'
 import { useSession } from 'next-auth/react'
 import { useRef, useState } from 'react'
+import toast from 'react-hot-toast'
 import { TweetBody } from '../typings'
 
 interface Props {
@@ -35,6 +36,7 @@ const TweetBox = ({ handleRefresh }: Props) => {
   }
 
   const postTweet = async () => {
+    const t = toast.loading('Processing Tweet')
     const tweetInfo: TweetBody = {
       text: input,
       username: session?.user?.name || 'Unknown User',
@@ -48,6 +50,7 @@ const TweetBox = ({ handleRefresh }: Props) => {
     })
 
     const json = await res.json()
+    toast.remove()
     setImage('')
     setInput('')
     setIsOpen(false)
@@ -56,9 +59,9 @@ const TweetBox = ({ handleRefresh }: Props) => {
 
   if (session) {
     return (
-      <div className="flex select-none space-x-2 p-5">
+      <div className="flex select-none space-x-2 pr-5 pb-5 md:p-5">
         <img
-          className="h-14 w-14 rounded-full object-cover"
+          className="hidden h-14 w-14 rounded-full object-cover md:inline"
           src={session.user?.image || ''}
           alt="profile"
         />
@@ -70,8 +73,8 @@ const TweetBox = ({ handleRefresh }: Props) => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
             ></textarea>
-            <div className="flex items-center">
-              <div className="flex flex-grow items-center space-x-2 text-twitter">
+            <div className="flex flex-col items-center gap-y-3 md:flex-row">
+              <div className="flex flex-grow items-center space-x-5 text-twitter md:space-x-4">
                 <PhotographIcon
                   onClick={() => setIsOpen(!isOpen)}
                   className="tweetBoxIcon"
@@ -84,9 +87,9 @@ const TweetBox = ({ handleRefresh }: Props) => {
               <button
                 onClick={handleSubmit}
                 disabled={!input}
-                className="rounded-full bg-twitter px-8 py-2 font-bold 
-              text-white hover:bg-twitterHover
-               disabled:cursor-not-allowed disabled:opacity-40"
+                className="w-full rounded-md bg-twitter px-8 py-2 font-bold text-white 
+              hover:bg-twitterHover disabled:cursor-not-allowed disabled:opacity-40
+               md:w-auto md:rounded-full"
               >
                 Tweet
               </button>
@@ -99,14 +102,14 @@ const TweetBox = ({ handleRefresh }: Props) => {
               >
                 <input
                   ref={imageInputRef}
-                  className="w-3/4 bg-transparent text-white 
-                  outline-none placeholder:text-gray-100"
+                  className="w-3/5 bg-transparent text-xs text-white outline-none placeholder:text-gray-100
+                  md:w-3/4 md:text-base"
                   type="text"
                   placeholder="Enter Image Url"
                 />
                 <button
                   onClick={addImageToTweet}
-                  className="ml-5  text-sm font-medium text-white"
+                  className="ml-5 text-xs font-medium text-white md:text-sm"
                   type="submit"
                 >
                   Add Image
@@ -115,7 +118,7 @@ const TweetBox = ({ handleRefresh }: Props) => {
             )}
             {image && (
               <img
-                className="mt-3 h-60 w-full rounded-lg object-cover"
+                className="mt-3 h-32 w-full rounded-lg object-cover md:h-60"
                 src={image}
               />
             )}

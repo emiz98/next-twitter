@@ -1,3 +1,7 @@
+.noSelect {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 3px;

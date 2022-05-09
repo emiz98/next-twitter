@@ -25,22 +25,24 @@ const Feed = ({ tweets: tweetsProp }: Props) => {
 
   return (
     <div className="col-span-8 max-h-screen overflow-y-scroll border-x scrollbar-hide dark:border-gray-600 dark:text-white lg:col-span-5">
-      <div className="flex select-none items-center justify-between p-5">
+      <div className="fixed top-0 z-50 flex w-[19rem] select-none items-center justify-between bg-white p-5 dark:bg-black md:w-[39.9rem]">
         <h1 className="text-xl font-bold">Home</h1>
         <div className="flex items-center gap-x-5">
           {session && (
             <div
               onClick={() => signOut()}
-              className="flex cursor-pointer items-center gap-x-2
-             rounded-full border-2 border-twitter px-1 py-1 pr-3
-             transition ease-out hover:bg-twitterHover hover:text-white"
+              className="flex cursor-pointer items-center rounded-full
+             border-2 border-twitter px-1 py-1 transition ease-out
+             hover:bg-twitterHover hover:text-white md:gap-x-2 md:pr-3"
             >
               <img
                 className="h-8 w-8 rounded-full object-cover"
                 src={session.user?.image || ''}
                 alt="current_user"
               />
-              <span className="text-sm font-medium">{session.user?.name}</span>
+              <span className="hidden text-sm font-medium md:inline">
+                {session.user?.name}
+              </span>
             </div>
           )}
           <RefreshIcon
@@ -51,7 +53,7 @@ const Feed = ({ tweets: tweetsProp }: Props) => {
         </div>
       </div>
 
-      <div>
+      <div className="mt-20">
         <TweetBox handleRefresh={handleRefresh} />
       </div>
 

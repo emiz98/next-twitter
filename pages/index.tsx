@@ -1,6 +1,7 @@
-import type { GetServerSideProps, GetStaticProps } from 'next'
+import type { GetStaticProps } from 'next'
+import { getSession } from 'next-auth/react'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Toaster } from 'react-hot-toast'
 import Feed from '../components/Feed'
 import Sidebar from '../components/Sidebar'
@@ -14,20 +15,11 @@ interface Props {
 
 const Home = ({ tweets }: Props) => {
   const [isDark, setIsDark] = useState(false)
-  // const [tweets, setTweets] = useState<any>([])
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const tweets = await fetchTweets()
-  //     setTweets(tweets)
-  //   }
-  //   fetchData()
-  // }, [])
 
   return (
     <div
-      className={`mx-auto max-h-screen overflow-hidden transition-all duration-500 ease-in-out
-      lg:max-w-7xl ${isDark && 'dark bg-[#292F33]'}`}
+      className={`noSelect max-h-screen overflow-hidden transition-all duration-500 ease-in-out
+      ${isDark && 'dark bg-black'}`}
     >
       <Head>
         <title>Twitter 1.0</title>
@@ -36,7 +28,7 @@ const Home = ({ tweets }: Props) => {
 
       <Toaster position="bottom-left" reverseOrder={false} />
 
-      <main className="grid grid-cols-10">
+      <main className="mx-auto grid grid-cols-10 lg:max-w-7xl">
         <Sidebar isDark={isDark} setIsDark={setIsDark} />
         <Feed tweets={tweets} />
         <Widgets isDark={isDark} />

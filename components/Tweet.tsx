@@ -88,7 +88,7 @@ const Tweet = ({ tweet, handleRefresh }: Props) => {
       {tweet.image && (
         <img
           className="my-5 max-h-64 w-full rounded-lg
-          border border-gray-50 object-cover shadow-md"
+          object-cover shadow-md"
           src={tweet.image}
           alt="tweetImage"
         />
@@ -106,7 +106,7 @@ const Tweet = ({ tweet, handleRefresh }: Props) => {
         <UploadIcon className="tweetIcon" />
       </div>
 
-      {commentsVisibility && (
+      {commentsVisibility && comments.length > 0 && (
         <div
           className="my-2 mt-5 max-h-44 space-y-5 overflow-y-scroll
       border-t border-gray-100 py-5 dark:border-gray-700"
@@ -142,7 +142,7 @@ const Tweet = ({ tweet, handleRefresh }: Props) => {
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="ml-5 flex-1 bg-transparent outline-none"
+            className="flex-1 bg-transparent outline-none md:ml-3"
             type="text"
             placeholder="write a comment..."
           />

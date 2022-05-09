@@ -22,7 +22,7 @@ const Sidebar = ({ isDark, setIsDark }: Props) => {
   const { data: session } = useSession()
   return (
     <div className="col-span-2 flex min-h-screen select-none flex-col items-center px-3 md:items-start md:px-4">
-      <div className="mb-5 flex w-full items-center justify-between">
+      <div className="mb-10 flex w-full flex-col items-center justify-between md:mb-5 md:flex-row">
         <svg
           className="m-4 h-10 w-10"
           xmlns="http://www.w3.org/2000/svg"
