@@ -1,5 +1,4 @@
-import type { GetStaticProps } from 'next'
-import { getSession } from 'next-auth/react'
+import type { GetStaticProps, GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { useState } from 'react'
 import { Toaster } from 'react-hot-toast'
@@ -39,7 +38,7 @@ const Home = ({ tweets }: Props) => {
 
 export default Home
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const tweets = await fetchTweets()
   return {
     props: {
