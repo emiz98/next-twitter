@@ -43,6 +43,10 @@ const Tweet = ({ tweet, handleRefresh }: Props) => {
       tweetId: tweet._id,
       username: session?.user?.name || 'Unknown User',
       profileImg: session?.user?.image || 'https://links.papareact.com/gll',
+      tweet: {
+        _ref: '',
+        _type: 'reference',
+      },
     }
 
     const res = await fetch(`/api/addComment`, {

@@ -30,7 +30,7 @@ const Feed = ({ tweets: tweetsProp }: Props) => {
         <div className="flex items-center gap-x-5">
           {session && (
             <div
-              onClick={signOut}
+              onClick={() => signOut()}
               className="flex cursor-pointer items-center gap-x-2
              rounded-full border-2 border-twitter px-1 py-1 pr-3
              transition ease-out hover:bg-twitterHover hover:text-white"
