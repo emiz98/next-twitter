@@ -56,13 +56,13 @@ const Feed = ({ tweets: tweetsProp }: Props) => {
       </div>
 
       <div>
-        {tweets.map((tweet) => (
+        {/* {tweets.map((tweet) => (
           <TweetComponent
             handleRefresh={handleRefresh}
             key={tweet._id}
             tweet={tweet}
           />
-        ))}
+        ))} */}
       </div>
     </div>
   )
