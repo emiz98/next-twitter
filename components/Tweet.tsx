@@ -65,15 +65,15 @@ const Tweet = ({ tweet, handleRefresh }: Props) => {
       className="border-y border-gray-100 p-5 
     dark:border-gray-600"
     >
-      <div className="flex items-center space-x-3">
+      <div className="flex items-start space-x-3 md:items-center">
         <img
-          className="w-10 rounded-full object-contain"
+          className="mt-1 w-10 rounded-full object-contain md:mt-0"
           src={tweet.profileImg}
           alt="profile"
         />
         <div className="flex flex-col">
-          <div className="flex items-center">
-            <p className="mr-2 font-medium">{tweet.username}</p>
+          <div className="flex flex-col md:flex-row md:items-center">
+            <p className="font-medium md:mr-2">{tweet.username}</p>
             <p className="mr-1 hidden text-sm md:inline-flex">
               @{tweet.username.replace(/\s+/g, '_').toLowerCase()} ·
             </p>

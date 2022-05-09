@@ -20,12 +20,16 @@ const Feed = ({ tweets: tweetsProp }: Props) => {
     setTweets(tweets)
     toast.success(text, {
       id: refreshToast,
+      style: {
+        background: '#333',
+        color: '#fff',
+      },
     })
   }
 
   return (
     <div className="col-span-8 max-h-screen overflow-y-scroll border-x scrollbar-hide dark:border-gray-600 dark:text-white lg:col-span-5">
-      <div className="fixed top-0 z-50 flex w-[19rem] select-none items-center justify-between bg-white p-5 dark:bg-black md:w-[39.9rem]">
+      <div className="fixed top-0 z-50 flex w-[19rem] select-none items-center justify-between bg-white px-5 py-4 dark:bg-black md:w-[39.9rem] md:p-5">
         <h1 className="text-xl font-bold">Home</h1>
         <div className="flex items-center gap-x-5">
           {session && (
