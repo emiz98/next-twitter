@@ -14,8 +14,6 @@ const Feed = ({ tweets: tweetsProp }: Props) => {
   const [tweets, setTweets] = useState<Tweet[]>(tweetsProp)
   const { data: session } = useSession()
 
-  console.log(tweets)
-
   const handleRefresh = async (text: string) => {
     const refreshToast = toast.loading('Refreshing...')
     const tweets = await fetchTweets()
